@@ -36,7 +36,7 @@ export default function ProductPage({ product }) {
   return (
     <div className="container">
       <Head>
-        <title>{product.title} — Appsscrip Demo Store</title>
+        <title>{String(product.title) + ' — Appsscrip Demo Store'}</title>
         <meta name="description" content={product.description.substring(0, 150)} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </Head>
@@ -49,7 +49,7 @@ export default function ProductPage({ product }) {
       <main>
         <section className="product-detail">
           <figure className="product-media">
-            <img src={product.image} alt={product.title} loading="lazy" />
+            <img src={product.image} alt={product.title} loading="lazy" onError={(e) => { e.target.onerror = null; e.target.src = '/images/product-sample-1.jpg'; }} />
           </figure>
           <div className="product-info">
             <h2 className="product-price">${product.price}</h2>

@@ -7,8 +7,8 @@ export default function ProductCard({ product }) {
   const shortTitle = product.title.length > 36 ? product.title.substring(0, 34) + '…' : product.title;
 
   return (
-    <article className="card stacked" aria-label={`Product ${product.title}`}>
-      <a href={`/product/${product.id}`} className="card-link" aria-label={`View ${product.title}`}>
+    <article className="card stacked" aria-label={`Product ${product.title}`}> 
+      <a href={`/product/${product.id}`} className="card-link column" aria-label={`View ${product.title}`}> 
         <figure className="card-media" aria-hidden>
           {isOutOfStock && <div className="badge">OUT OF STOCK</div>}
           {isRecommended && <div className="badge recommended">RECOMMENDED</div>}
@@ -24,9 +24,10 @@ export default function ProductCard({ product }) {
             width="320"
             height="320"
             loading="lazy"
+            onError={(e) => { e.target.onerror = null; e.target.src = '/images/product-sample-1.jpg'; }}
           />
         </figure>
-        <div className="card-body">
+        <div className="card-body column">
           <h3 className="product-title">{shortTitle}</h3>
           <p className="product-price">${product.price}</p>
           <p className="product-desc">{product.description.substring(0, 80)}...</p>

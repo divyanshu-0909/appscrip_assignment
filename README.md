@@ -114,3 +114,10 @@ If you want, I can also convert the product detail page(s) to SSG with pre-gener
 - We intentionally avoid external CSS frameworks such as Tailwind or Bootstrap.
 - The code uses minimal JS and DOM elements for the product cards.
 - You can optionally switch to client-side fetches or SSG/ISR depending on your requirements.
+
+Images and assets:
+
+- This demo uses a mix of external and local images. If a third-party API is unavailable, the app will fall back to `data/sampleProducts.json` which references images in `/public/images`.
+- If you see broken images on deployment, check the `/public/images` folder to ensure the referenced filenames exist, clear the CDN cache, and redeploy. The project ships a `product-sample-1.jpg` in `public/images` used as a fallback asset for local data.
+- Product photos are now pulled from Unsplash (https://unsplash.com). If Unsplash images fail to load the page will fall back to `product-sample-1.jpg` in `public/images`.
+- Attribution: Unsplash photos are free to use, but attribution is appreciated. The sample image URLs are included in `data/sampleProducts.json`.

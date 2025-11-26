@@ -35,7 +35,7 @@ export default function Home({ products }) {
   return (
     <div className="container">
       <Head>
-        <title>Appsscrip Demo Store — Hand-coded Next.js</title>
+        <title>{'Appsscrip Demo Store — Hand-coded Next.js'}</title>
         <meta name="description" content="A small demo store built with Next.js using plain HTML, CSS, and JS — SSR example using fakestoreapi" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow" />
