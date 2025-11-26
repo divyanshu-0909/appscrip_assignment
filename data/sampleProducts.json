@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "Faux Leather Jacket",
+    "price": 79.99,
+    "description": "A sleek, vegan-friendly faux leather jacket for cool evenings.",
+    "category": "clothing",
+    "image": "/images/jacket.jpg",
+    "rating": { "rate": 4.2, "count": 120 }
+  },
+  {
+    "id": 2,
+    "title": "Classic Watch",
+    "price": 199.99,
+    "description": "An elegant, classic watch that pairs with everything.",
+    "category": "accessories",
+    "image": "/images/watch.jpg",
+    "rating": { "rate": 4.7, "count": 67 }
+  },
+  {
+    "id": 3,
+    "title": "Canvas Tote",
+    "price": 29.99,
+    "description": "A durable, reusable canvas tote for everyday use.",
+    "category": "bags",
+    "image": "/images/tote.jpg",
+    "rating": { "rate": 4.1, "count": 37 }
+  }
+]

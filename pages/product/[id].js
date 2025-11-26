@@ -62,15 +62,38 @@ export default function ProductPage({ product }) {
   );
 }
 
+async function fetchWithTimeout(url, options = {}, timeout = 4000) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+  try {
+    const res = await fetch(url, { signal: controller.signal, ...options });
+    clearTimeout(id);
+    return res;
+  } catch (err) {
+    clearTimeout(id);
+    throw err;
+  }
+}
+
 export async function getServerSideProps(context) {
   const { id } = context.params;
   try {
-    const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const res = await fetchWithTimeout(`https://fakestoreapi.com/products/${id}`, {}, 4500);
     if (!res.ok) return { notFound: true };
     const product = await res.json();
     return { props: { product } };
   } catch (err) {
-    console.error(err);
-    return { props: { product: null } };
+    console.error('SSR product fetch failed', err?.message || err);
+    // Try to load from sample data
+    try {
+      const fallback = await import('../../data/sampleProducts.json');
+      const products = fallback.default || fallback;
+      const product = products.find(p => String(p.id) === String(id));
+      if (!product) return { notFound: true };
+      return { props: { product } };
+    } catch (inner) {
+      console.error('Failed to load fallback product', inner?.message || inner);
+      return { props: { product: null } };
+    }
   }
 }

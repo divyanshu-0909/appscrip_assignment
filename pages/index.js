@@ -70,15 +70,35 @@ export default function Home({ products }) {
   );
 }
 
+async function fetchWithTimeout(url, options = {}, timeout = 4000) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+  try {
+    const res = await fetch(url, { signal: controller.signal, ...options });
+    clearTimeout(id);
+    return res;
+  } catch (err) {
+    clearTimeout(id);
+    throw err;
+  }
+}
+
 export async function getServerSideProps() {
   // Server-side rendering for fresh content (SSR)
   try {
-    const res = await fetch('https://fakestoreapi.com/products?limit=8');
+    const res = await fetchWithTimeout('https://fakestoreapi.com/products?limit=8', {}, 4500);
+    if (!res.ok) throw new Error('Non-ok response from fakestoreapi');
     const products = await res.json();
-
     return { props: { products } };
   } catch (err) {
-    console.error('SSR fetch failed', err);
-    return { props: { products: [] } };
+    console.error('SSR fetch failed', err?.message || err);
+    // Fallback to bundled sample data so the page still renders on hosts that block outbound fetches or have issues.
+    try {
+      const fallback = await import('../data/sampleProducts.json');
+      return { props: { products: fallback.default || fallback } };
+    } catch (inner) {
+      console.error('Failed to load fallback sample data', inner?.message || inner);
+      return { props: { products: [] } };
+    }
   }
 }

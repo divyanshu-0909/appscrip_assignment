@@ -42,6 +42,20 @@ npm start
 
 - Vercel: Directly deploy the repo — Vercel supports SSR.
 
+Troubleshooting deployments:
+
+- If your deployment returns ERR_CONNECTION_TIMED_OUT or a 5xx error, check these things first:
+  1. Visit the host's dashboard (Vercel or Netlify) and inspect the latest deployment logs; look for failed server startup or runtime errors.
+ 2. Confirm the domain and DNS in the host settings if you mapped a custom domain.
+ 3. For Vercel: look at the Serverless Function logs for routes using SSR (getServerSideProps) — any outbound fetch errors will show here.
+ 4. For Netlify: ensure you're using `@netlify/plugin-nextjs` so that SSR pages are handled properly.
+ 5. Use the health endpoint in this repo to test whether the site/serverless functions are reachable:
+     - https://<your-deployment>.vercel.app/api/health
+     - A healthy response should be 200 and return JSON: { status: 'ok' }
+ 6. If 3rd-party API fetches (e.g., fakestoreapi.com) are failing or slow in the server environment, this repository falls back to a bundled `data/sampleProducts.json` so pages still render. Check the function logs to see whether the fallback was used.
+
+If you'd like, I can add a simple health check route for the root or create an automated uptime check.
+
 ## SEO and Accessibility
 
 - Page title and description set in `pages/index.js`
