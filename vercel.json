@@ -1,0 +1,8 @@
+{
+  "build": {
+    "env": {}
+  },
+  "routes": [
+    { "src": "/health.html", "dest": "/health.html" }
+  ]
+}

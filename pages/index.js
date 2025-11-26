@@ -83,22 +83,24 @@ async function fetchWithTimeout(url, options = {}, timeout = 4000) {
   }
 }
 
-export async function getServerSideProps() {
-  // Server-side rendering for fresh content (SSR)
+export async function getStaticProps() {
+  // Build-time fetch for product listing; using ISR to refresh hourly.
   try {
+    console.log('[SSG] Initiating build-time fetch for product listing...');
     const res = await fetchWithTimeout('https://fakestoreapi.com/products?limit=8', {}, 4500);
     if (!res.ok) throw new Error('Non-ok response from fakestoreapi');
     const products = await res.json();
-    return { props: { products } };
+    console.log('[SSG] fetch succeeded, items:', Array.isArray(products) ? products.length : 'unknown');
+    return { props: { products }, revalidate: 60 };
   } catch (err) {
-    console.error('SSR fetch failed', err?.message || err);
-    // Fallback to bundled sample data so the page still renders on hosts that block outbound fetches or have issues.
+    console.error('[SSG] fetch failed', err?.message || err);
     try {
       const fallback = await import('../data/sampleProducts.json');
-      return { props: { products: fallback.default || fallback } };
+      console.log('[SSG] Using fallback sample data via sampleProducts.json');
+      return { props: { products: fallback.default || fallback }, revalidate: 60 };
     } catch (inner) {
-      console.error('Failed to load fallback sample data', inner?.message || inner);
-      return { props: { products: [] } };
+      console.error('[SSG] Failed to load fallback sample data', inner?.message || inner);
+      return { props: { products: [] }, revalidate: 60 };
     }
   }
 }

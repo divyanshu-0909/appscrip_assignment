@@ -75,25 +75,49 @@ async function fetchWithTimeout(url, options = {}, timeout = 4000) {
   }
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const { id } = context.params;
   try {
+    console.log('[SSG] Fetching product', id);
     const res = await fetchWithTimeout(`https://fakestoreapi.com/products/${id}`, {}, 4500);
     if (!res.ok) return { notFound: true };
     const product = await res.json();
-    return { props: { product } };
+    console.log('[SSG] Product fetch success', product && product.id);
+    return { props: { product }, revalidate: 60 };
   } catch (err) {
-    console.error('SSR product fetch failed', err?.message || err);
-    // Try to load from sample data
+    console.error('[SSG] product fetch failed', err?.message || err);
     try {
       const fallback = await import('../../data/sampleProducts.json');
       const products = fallback.default || fallback;
       const product = products.find(p => String(p.id) === String(id));
+      console.log('[SSG] Using fallback product data for id', id, !!product);
       if (!product) return { notFound: true };
-      return { props: { product } };
+      return { props: { product }, revalidate: 60 };
     } catch (inner) {
-      console.error('Failed to load fallback product', inner?.message || inner);
-      return { props: { product: null } };
+      console.error('[SSG] Failed to load fallback product', inner?.message || inner);
+      return { props: { product: null }, revalidate: 60 };
+    }
+  }
+}
+
+export async function getStaticPaths() {
+  // Try to pre-generate product pages at build time. Use fallback blocking so Vercel can render new pages if needed.
+  try {
+    const res = await fetch('https://fakestoreapi.com/products?limit=50');
+    const products = await res.json();
+    const paths = products && Array.isArray(products)
+      ? products.map(p => ({ params: { id: String(p.id) } }))
+      : [];
+    return { paths, fallback: 'blocking' };
+  } catch (err) {
+    // Fallback to local data
+    try {
+      const fallback = await import('../../data/sampleProducts.json');
+      const items = fallback.default || fallback;
+      const paths = items.map(p => ({ params: { id: String(p.id) } }));
+      return { paths, fallback: 'blocking' };
+    } catch (inner) {
+      return { paths: [], fallback: 'blocking' };
     }
   }
 }
