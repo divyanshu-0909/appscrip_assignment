@@ -5,7 +5,7 @@
     "price": 79.99,
     "description": "A sleek, vegan-friendly faux leather jacket for cool evenings.",
     "category": "clothing",
-    "image": "https://images.unsplash.com/photo-1520975917728-300e6ea5f8ee?auto=format&fit=crop&w=640&q=80",
+    "image": "https://picsum.photos/id/237/640/640",
     "rating": { "rate": 4.2, "count": 120 }
   },
   {
@@ -14,7 +14,7 @@
     "price": 199.99,
     "description": "An elegant, classic watch that pairs with everything.",
     "category": "accessories",
-    "image": "https://images.unsplash.com/photo-1512149673959-6d02b9b1e1d8?auto=format&fit=crop&w=640&q=80",
+    "image": "https://picsum.photos/id/100/640/640",
     "rating": { "rate": 4.7, "count": 67 }
   },
   {
@@ -23,7 +23,34 @@
     "price": 29.99,
     "description": "A durable, reusable canvas tote for everyday use.",
     "category": "bags",
-    "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=640&q=80",
+    "image": "https://picsum.photos/id/180/640/640",
     "rating": { "rate": 4.1, "count": 37 }
+  },
+  {
+    "id": 4,
+    "title": "Running Shoes",
+    "price": 89.99,
+    "description": "Comfortable, lightweight running shoes for everyday workouts.",
+    "category": "footwear",
+    "image": "https://picsum.photos/id/21/640/640",
+    "rating": { "rate": 4.5, "count": 98 }
+  },
+  {
+    "id": 5,
+    "title": "Wireless Earbuds",
+    "price": 59.99,
+    "description": "Noise-isolating wireless earbuds with HD sound.",
+    "category": "electronics",
+    "image": "https://picsum.photos/id/250/640/640",
+    "rating": { "rate": 4.3, "count": 154 }
+  },
+  {
+    "id": 6,
+    "title": "Sports Backpack",
+    "price": 49.99,
+    "description": "Water-resistant backpack ideal for travel and gym.",
+    "category": "bags",
+    "image": "https://picsum.photos/id/1084/640/640",
+    "rating": { "rate": 4.6, "count": 82 }
   }
 ]
