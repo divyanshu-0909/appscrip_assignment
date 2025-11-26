@@ -1,0 +1,19 @@
+{
+  "name": "appsscrip-task-candidate-name",
+  "version": "1.0.0",
+  "description": "A small Next.js demo app (vanilla HTML/CSS/JS) for the Appsscrip task",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build && next export"
+  },
+  "keywords": [],
+  "author": "candidate-name",
+  "license": "MIT",
+  "dependencies": {
+    "next": "13.5.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}
