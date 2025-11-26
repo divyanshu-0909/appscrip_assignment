@@ -19,17 +19,18 @@ export default function ProductCard({ product }) {
             <button className="action-btn" aria-label="Quick view">🔍</button>
           </div>
           <img
-            src={product.image}
+            src={(product.images && product.images[0]) || product.image}
             alt={product.title}
             width="320"
             height="320"
             loading="lazy"
+            onError={(e) => { e.target.onerror = null; e.target.src = '/images/product-sample-1.jpg'; }}
           />
         </figure>
         <div className="card-body column">
           <h3 className="product-title">{shortTitle}</h3>
           <p className="product-price">${product.price}</p>
-          <p className="product-desc">{product.description.substring(0, 80)}...</p>
+          <p className="product-desc">{(product.shortDescription || product.description || '').substring(0, 80)}{((product.shortDescription || product.description || '').length > 80) ? '...' : ''}</p>
           <div className="product-footer-note">Sign in or Create an account to see pricing</div>
         </div>
       </a>

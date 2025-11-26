@@ -3,54 +3,60 @@
     "id": 1,
     "title": "Faux Leather Jacket",
     "price": 79.99,
-    "description": "A sleek, vegan-friendly faux leather jacket for cool evenings.",
+    "shortDescription": "Modern faux leather jacket — vegan-friendly, tailored fit.",
+    "longDescription": "This faux leather jacket offers a sharp, tailored silhouette with soft, vegan-friendly faux leather. Features include a zip-front closure, two side pockets, inner lining for comfort, and reinforced seams for durability. Machine washable on a gentle cycle or spot clean as needed.",
     "category": "clothing",
-    "image": "https://picsum.photos/id/237/640/640",
+    "images": ["https://picsum.photos/id/237/640/640","https://picsum.photos/id/238/640/640"],
     "rating": { "rate": 4.2, "count": 120 }
   },
   {
     "id": 2,
     "title": "Classic Watch",
     "price": 199.99,
-    "description": "An elegant, classic watch that pairs with everything.",
+    "shortDescription": "Stainless steel classic watch with minimalist dial.",
+    "longDescription": "An elegant timepiece featuring a polished stainless steel case and band, scratch-resistant mineral crystal, and a water resistance rating of 50 meters. The minimalist dial pairs well with both business and casual attire.",
     "category": "accessories",
-    "image": "https://picsum.photos/id/100/640/640",
+    "images": ["https://picsum.photos/id/100/640/640","https://picsum.photos/id/101/640/640"],
     "rating": { "rate": 4.7, "count": 67 }
   },
   {
     "id": 3,
     "title": "Canvas Tote",
     "price": 29.99,
-    "description": "A durable, reusable canvas tote for everyday use.",
+    "shortDescription": "Durable canvas tote with roomy interior and reinforced handles.",
+    "longDescription": "Made from 100% organic cotton canvas, this tote offers a spacious main compartment, an inner zip pocket for valuables, and reinforced handles for heavy loads. Perfect for groceries, books, or beach days.",
     "category": "bags",
-    "image": "https://picsum.photos/id/180/640/640",
+    "images": ["https://picsum.photos/id/180/640/640","https://picsum.photos/id/181/640/640"],
     "rating": { "rate": 4.1, "count": 37 }
   },
   {
     "id": 4,
     "title": "Running Shoes",
     "price": 89.99,
-    "description": "Comfortable, lightweight running shoes for everyday workouts.",
+    "shortDescription": "Lightweight running shoes with breathable mesh and cushioned sole.",
+    "longDescription": "Designed for daily training, these running shoes feature a breathable mesh upper, responsive EVA midsole cushioning, and a durable rubber outsole for traction. Available in multiple colors and sizes.",
     "category": "footwear",
-    "image": "https://picsum.photos/id/21/640/640",
+    "images": ["https://picsum.photos/id/21/640/640","https://picsum.photos/id/22/640/640"],
     "rating": { "rate": 4.5, "count": 98 }
   },
   {
     "id": 5,
     "title": "Wireless Earbuds",
     "price": 59.99,
-    "description": "Noise-isolating wireless earbuds with HD sound.",
+    "shortDescription": "Compact wireless earbuds with noise cancellation and long battery life.",
+    "longDescription": "These true wireless earbuds offer active noise cancellation, up to 8 hours of playback per charge (30 hours with case), and touch controls for playback and calls. IPX4 splash resistance.",
     "category": "electronics",
-    "image": "https://picsum.photos/id/250/640/640",
+    "images": ["https://picsum.photos/id/250/640/640","https://picsum.photos/id/251/640/640"],
     "rating": { "rate": 4.3, "count": 154 }
   },
   {
     "id": 6,
     "title": "Sports Backpack",
     "price": 49.99,
-    "description": "Water-resistant backpack ideal for travel and gym.",
+    "shortDescription": "Water-resistant sports backpack with multiple compartments.",
+    "longDescription": "Features include a ventilated back panel, padded laptop sleeve (15\"), multiple organizer pockets, and adjustable padded shoulder straps for comfort during long commutes or travel.",
     "category": "bags",
-    "image": "https://picsum.photos/id/1084/640/640",
+    "images": ["https://picsum.photos/id/1084/640/640","https://picsum.photos/id/1085/640/640"],
     "rating": { "rate": 4.6, "count": 82 }
   }
 ]

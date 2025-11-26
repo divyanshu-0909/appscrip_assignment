@@ -308,6 +308,16 @@ body {
   height: auto;
   object-fit: contain;
 }
+.gallery {
+  display: flex;
+  gap: 8px;
+}
+.gallery img {
+  width: 140px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+}
 .product-info {
   padding: 6px 0;
 }

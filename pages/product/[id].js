@@ -18,8 +18,8 @@ export default function ProductPage({ product }) {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": product.title,
-    "image": product.image,
-    "description": product.description,
+    "image": (product.images && product.images[0]) || product.image,
+    "description": product.longDescription || product.shortDescription || product.description,
     "sku": product.id,
     "brand": {
       "@type": "Thing",
@@ -49,11 +49,19 @@ export default function ProductPage({ product }) {
       <main>
         <section className="product-detail">
           <figure className="product-media">
-            <img src={product.image} alt={product.title} loading="lazy"  />
+            {(product.images && product.images.length > 0) ? (
+              <div className="gallery">
+                {product.images.map((src, i) => (
+                  <img key={i} src={src} alt={`${product.title} ${i+1}`} loading="lazy" onError={(e)=>{e.target.onerror=null;e.target.src='/images/product-sample-1.jpg'}} />
+                ))}
+              </div>
+            ) : (
+              <img src={product.image} alt={product.title} loading="lazy" onError={(e)=>{e.target.onerror=null;e.target.src='/images/product-sample-1.jpg'}} />
+            )}
           </figure>
           <div className="product-info">
             <h2 className="product-price">${product.price}</h2>
-            <p className="product-desc">{product.description}</p>
+            <p className="product-desc">{product.longDescription || product.shortDescription || product.description}</p>
             <p className="product-cat">Category: {product.category}</p>
           </div>
         </section>
