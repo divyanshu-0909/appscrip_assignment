@@ -49,7 +49,7 @@ export default function ProductPage({ product }) {
       <main>
         <section className="product-detail">
           <figure className="product-media">
-            <img src={product.image} alt={product.title} loading="lazy" onError={(e) => { e.target.onerror = null; e.target.src = '/images/product-sample-1.jpg'; }} />
+            <img src={product.image} alt={product.title} loading="lazy"  />
           </figure>
           <div className="product-info">
             <h2 className="product-price">${product.price}</h2>

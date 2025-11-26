@@ -24,7 +24,6 @@ export default function ProductCard({ product }) {
             width="320"
             height="320"
             loading="lazy"
-            onError={(e) => { e.target.onerror = null; e.target.src = '/images/product-sample-1.jpg'; }}
           />
         </figure>
         <div className="card-body column">
